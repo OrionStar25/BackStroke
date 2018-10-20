@@ -51,6 +51,7 @@ while(cap.isOpened()):
         cv2.circle(img, (centroid_x, centroid_y), 2, (0,0,255), 2)
         cv2.line(img,(250,0),(250,700),(255,0,0),5)
         cv2.line(img,(400,0),(400,700),(255,0,0),5)
+        cv2.line(img,(250,150),(400, 150),(255,0,0),5)
         cv2.line(img,(250,350),(400, 350),(255,0,0),5)
 
         #cv2.imshow('Threshold', frame_threshed)
@@ -65,9 +66,13 @@ while(cap.isOpened()):
         # up-down move
         if centroid_x >= 250 and centroid_x <= 400:
             # up
-            if centroid_y >= 0 and centroid_y <= 350:
+            if centroid_y >= 0 and centroid_y <= 150:
                 print ('up')
                 pyautogui.press('up')
+            # click
+            if centroid_y >= 150 and centroid_y <=350:
+                print ('click')
+                pyautogui.click(clicks=1,interval=5, button='left')
             # down
             if centroid_y >= 350 and centroid_y <=700:
                 print ('down')
