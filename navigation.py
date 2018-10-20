@@ -22,13 +22,6 @@ while(cap.isOpened()):
     #img = cv2.GaussianBlur(img, (15, 15), 0)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) 
 
-    """
-    Use this for thresholding using Otsu's Binarization method
-    """
-    #grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    #_, frame_threshed = cv2.threshold(grey, 127, 255,
-    #                        cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
-
     frame_threshed = cv2.inRange(hsv, BLUE_MIN, BLUE_MAX) #change
 
     _,contours,hierarchy = cv2.findContours(frame_threshed, 1, 2)
@@ -88,36 +81,6 @@ while(cap.isOpened()):
             if centroid_x >= 400:
                 print ('right')
                 pyautogui.press('right')
-
-
-        """
-        This method checks if there is a change in the coordinates of the
-        centroid of bounding rectangle by some specific threshold in x or y
-        axis and then simulates appropriate move.
-        """
-
-        ##right-left move
-        #diff_x = centroid_x - last_x
-        #if diff_x >= 30:
-        #    print 'right'
-        #    pyautogui.press('right')
-        #    s = 'right'
-        #elif diff_x <= -30:
-        #    print 'left'
-        #    pyautogui.press('left')
-        #    s = 'left'
-
-        ##up-down move
-        #diff_y = centroid_y - last_y
-        #if diff_y >= 30:
-        #    print 'down'
-        #    pyautogui.press('down')
-        #    s = 'down'
-        #elif diff_y <= -30:
-        #    print 'up'
-        #    pyautogui.press('up')
-        #    s = 'up'
-        #move = s
 
     k = cv2.waitKey(10)
     if k == 27:
