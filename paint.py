@@ -1,6 +1,7 @@
 import cv2
 import pyautogui
 import numpy as np
+from peace import *
 
 cap = cv2.VideoCapture(0)
 # PINK_MIN = np.array([120, 50, 50], np.uint8) #change
@@ -44,14 +45,16 @@ while(cap.isOpened()):
 
         cv2.circle(img, (centroid_x, centroid_y), 2, (0,0,255), 2)
         cv2.line(img,(250,0),(250,700),(255,0,0),5)
-        cv2.line(img,(400,0),(400,700),(255,0,0),5)
-        cv2.line(img,(250,150),(400, 150),(255,0,0),5)
-        cv2.line(img,(250,350),(400, 350),(255,0,0),5)
+
+        if centroid_x >= 0 and centroid_x <= 250:
+            draw()
+
+        #left-right move
+        if centroid_x >= 250 and centroid_x <= 700:
+            pyautogui.dragTo(centroid_x, centroid_y, duration=0) 
 
         #cv2.imshow('Threshold', frame_threshed)
-        cv2.imshow('Original', img)
-
-        pyautogui.dragTo(centroid_x, centroid_y, duration=0) 
+        cv2.imshow('Original', img)      
         
 
     k = cv2.waitKey(10)
