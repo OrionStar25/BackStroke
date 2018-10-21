@@ -65,7 +65,7 @@ while(cap.isOpened()):
             # click
             if centroid_y >= 150 and centroid_y <=350:
                 print ('click')
-                pyautogui.click(clicks=1,interval=5, button='left')
+                # pyautogui.click(clicks=1,interval=5, button='left')
             # down
             if centroid_y >= 350 and centroid_y <=700:
                 print ('down')

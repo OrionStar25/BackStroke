@@ -12,7 +12,7 @@ centroid_x = 0
 centroid_y = 0
 s = ''
 move = ''
-pyautogui.FAILSAFE = False
+# pyautogui.FAILSAFE = False
 
 while(cap.isOpened()):
 
